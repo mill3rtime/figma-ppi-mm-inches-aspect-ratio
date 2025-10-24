@@ -9,6 +9,7 @@ A Figma plugin that displays dimensions in millimeters, inches, and aspect ratio
   - Original pixel dimensions
   - Dimensions in millimeters at 160 PPI
   - Dimensions in inches (to 2 decimal places) at 160 PPI
+  - Diagonal size in millimeters and inches at 160 PPI
   - Simplified aspect ratio
 
 ## Installation
@@ -29,6 +30,7 @@ A Figma plugin that displays dimensions in millimeters, inches, and aspect ratio
 
 - **Millimeters**: `(pixels / 160) × 25.4`
 - **Inches**: `pixels / 160`
+- **Diagonal**: `sqrt(width² + height²)` in pixels, then converted to mm and inches
 - **Aspect Ratio**: Simplified width:height ratio (e.g., 16:9, 4:3)
 
 ## Example Output
@@ -40,6 +42,7 @@ Dimensions (1920px × 1080px)
 At 160 PPI:
 • 304.80mm × 171.45mm
 • 12.00" × 6.75"
+• Diagonal: 349.70mm (13.77")
 • Aspect Ratio: 16:9
 ```
 
