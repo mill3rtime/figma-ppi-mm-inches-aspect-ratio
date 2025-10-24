@@ -1,0 +1,15 @@
+{
+  "name": "figma-dimensions-display",
+  "version": "1.0.0",
+  "description": "Figma plugin to display dimensions in mm, inches, and aspect ratio at 160 PPI",
+  "main": "code.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.90.0",
+    "typescript": "^5.3.3"
+  }
+}

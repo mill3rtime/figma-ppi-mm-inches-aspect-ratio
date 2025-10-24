@@ -1,0 +1,12 @@
+{
+  "name": "Dimensions Display (PPI/MM/Aspect Ratio)",
+  "id": "dimensions-display-ppi-mm",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": []
+  }
+}
