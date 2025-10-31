@@ -50,19 +50,17 @@ if (figma.currentPage.selection.length === 0) {
 
     // Load font asynchronously
     figma.loadFontAsync({ family: "Inter", style: "Regular" }).then(() => {
-      text.characters = `Dimensions (${width}px × ${height}px)\n\nAt 160 PPI:\n• ${widthMm}mm × ${heightMm}mm\n• ${widthInches}" × ${heightInches}"\n• Diagonal: ${diagonalMm}mm (${diagonalInches}")\n• Aspect Ratio: ${aspectRatio}`;
+      text.characters = `[${diagonalMm}mm (${diagonalInches}")] ${selection.name}\n${widthMm}mm (${widthInches}") × ${heightMm}mm (${heightInches}")\n${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`;
       text.fontSize = 14;
-
-      // Position the text to the right of the selected object
-      text.x = selection.x + selection.width + 20;
-      text.y = selection.y;
 
       // Add auto-layout to make text readable
       const frame = figma.createFrame();
       frame.name = "Dimensions Info";
       frame.appendChild(text);
       frame.resize(text.width + 20, text.height + 20);
-      frame.x = selection.x + selection.width + 20;
+
+      // Position the text to the left of the selected object
+      frame.x = selection.x - frame.width - 20;
       frame.y = selection.y;
       frame.paddingLeft = 10;
       frame.paddingRight = 10;
@@ -79,19 +77,33 @@ if (figma.currentPage.selection.length === 0) {
       figma.currentPage.selection = [frame];
       figma.viewport.scrollAndZoomIntoView([frame]);
 
-      figma.closePlugin(`Dimensions displayed: ${widthMm}mm × ${heightMm}mm, ${widthInches}" × ${heightInches}", Diagonal: ${diagonalMm}mm (${diagonalInches}"), Aspect ratio: ${aspectRatio}`);
+      figma.closePlugin(`Dimensions displayed: [${diagonalMm}mm (${diagonalInches}")] ${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`);
     }).catch((error) => {
       // If Inter font is not available, try default font
       figma.loadFontAsync({ family: "Roboto", style: "Regular" }).then(() => {
-        text.characters = `Dimensions (${width}px × ${height}px)\n\nAt 160 PPI:\n• ${widthMm}mm × ${heightMm}mm\n• ${widthInches}" × ${heightInches}"\n• Diagonal: ${diagonalMm}mm (${diagonalInches}")\n• Aspect Ratio: ${aspectRatio}`;
+        text.characters = `[${diagonalMm}mm (${diagonalInches}")] ${selection.name}\n${widthMm}mm (${widthInches}") × ${heightMm}mm (${heightInches}")\n${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`;
         text.fontSize = 14;
-        text.x = selection.x + selection.width + 20;
-        text.y = selection.y;
 
-        figma.currentPage.selection = [text];
-        figma.viewport.scrollAndZoomIntoView([text]);
+        const frame = figma.createFrame();
+        frame.name = "Dimensions Info";
+        frame.appendChild(text);
+        frame.resize(text.width + 20, text.height + 20);
+        frame.x = selection.x - frame.width - 20;
+        frame.y = selection.y;
+        frame.paddingLeft = 10;
+        frame.paddingRight = 10;
+        frame.paddingTop = 10;
+        frame.paddingBottom = 10;
+        frame.fills = [{ type: "SOLID", color: { r: 1, g: 1, b: 1 } }];
+        frame.strokes = [{ type: "SOLID", color: { r: 0.8, g: 0.8, b: 0.8 } }];
+        frame.strokeWeight = 1;
+        text.x = 0;
+        text.y = 0;
 
-        figma.closePlugin(`Dimensions displayed: ${widthMm}mm × ${heightMm}mm, ${widthInches}" × ${heightInches}", Diagonal: ${diagonalMm}mm (${diagonalInches}"), Aspect ratio: ${aspectRatio}`);
+        figma.currentPage.selection = [frame];
+        figma.viewport.scrollAndZoomIntoView([frame]);
+
+        figma.closePlugin(`Dimensions displayed: [${diagonalMm}mm (${diagonalInches}")] ${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`);
       });
     });
   }
