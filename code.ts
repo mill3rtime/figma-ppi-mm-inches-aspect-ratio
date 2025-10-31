@@ -59,9 +59,9 @@ if (figma.currentPage.selection.length === 0) {
       frame.appendChild(text);
       frame.resize(text.width + 20, text.height + 20);
 
-      // Position the text to the left of the selected object
-      frame.x = selection.x - frame.width - 20;
-      frame.y = selection.y;
+      // Position the text 100px to the left and 100px above the selected object
+      frame.x = selection.x - 100;
+      frame.y = selection.y - 100;
       frame.paddingLeft = 10;
       frame.paddingRight = 10;
       frame.paddingTop = 10;
@@ -88,8 +88,8 @@ if (figma.currentPage.selection.length === 0) {
         frame.name = "Dimensions Info";
         frame.appendChild(text);
         frame.resize(text.width + 20, text.height + 20);
-        frame.x = selection.x - frame.width - 20;
-        frame.y = selection.y;
+        frame.x = selection.x - 100;
+        frame.y = selection.y - 100;
         frame.paddingLeft = 10;
         frame.paddingRight = 10;
         frame.paddingTop = 10;
