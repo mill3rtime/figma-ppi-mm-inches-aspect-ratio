@@ -50,7 +50,7 @@ if (figma.currentPage.selection.length === 0) {
 
     // Load font asynchronously
     figma.loadFontAsync({ family: "Inter", style: "Regular" }).then(() => {
-      text.characters = `[${diagonalMm}mm (${diagonalInches}")] ${selection.name}\n${widthMm}mm (${widthInches}") × ${heightMm}mm (${heightInches}")\n${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`;
+      text.characters = `${diagonalInches}" inch concept\n${widthMm}mm (${widthInches}") × ${heightMm}mm (${heightInches}")\n${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`;
       text.fontSize = 14;
 
       // Add auto-layout to make text readable
@@ -77,11 +77,11 @@ if (figma.currentPage.selection.length === 0) {
       figma.currentPage.selection = [frame];
       figma.viewport.scrollAndZoomIntoView([frame]);
 
-      figma.closePlugin(`Dimensions displayed: [${diagonalMm}mm (${diagonalInches}")] ${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`);
+      figma.closePlugin(`Dimensions displayed: ${diagonalInches}" inch concept - ${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`);
     }).catch((error) => {
       // If Inter font is not available, try default font
       figma.loadFontAsync({ family: "Roboto", style: "Regular" }).then(() => {
-        text.characters = `[${diagonalMm}mm (${diagonalInches}")] ${selection.name}\n${widthMm}mm (${widthInches}") × ${heightMm}mm (${heightInches}")\n${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`;
+        text.characters = `${diagonalInches}" inch concept\n${widthMm}mm (${widthInches}") × ${heightMm}mm (${heightInches}")\n${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`;
         text.fontSize = 14;
 
         const frame = figma.createFrame();
@@ -103,7 +103,7 @@ if (figma.currentPage.selection.length === 0) {
         figma.currentPage.selection = [frame];
         figma.viewport.scrollAndZoomIntoView([frame]);
 
-        figma.closePlugin(`Dimensions displayed: [${diagonalMm}mm (${diagonalInches}")] ${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`);
+        figma.closePlugin(`Dimensions displayed: ${diagonalInches}" inch concept - ${Math.round(width)}×${Math.round(height)} @ ${PPI} ppi`);
       });
     });
   }

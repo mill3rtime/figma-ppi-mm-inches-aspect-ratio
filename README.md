@@ -6,8 +6,7 @@ A Figma plugin that displays dimensions in millimeters, inches, and aspect ratio
 
 - Select any frame or rectangle in Figma
 - Automatically generates a text frame to the left of your selection showing:
-  - Diagonal size in millimeters and inches at 160 PPI
-  - Frame name
+  - Diagonal size in inches with "inch concept" label
   - Dimensions in millimeters and inches (to 2 decimal places) at 160 PPI
   - Pixel dimensions at 160 PPI
 
@@ -33,9 +32,9 @@ A Figma plugin that displays dimensions in millimeters, inches, and aspect ratio
 
 ## Example Output
 
-For a 1920px × 1080px frame named "Hero Image":
+For a 1920px × 1080px frame:
 ```
-[349.70mm (13.77")] Hero Image
+13.77" inch concept
 304.80mm (12.00") × 171.45mm (6.75")
 1920×1080 @ 160 ppi
 ```
