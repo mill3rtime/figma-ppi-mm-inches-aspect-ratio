@@ -59,9 +59,13 @@ if (figma.currentPage.selection.length === 0) {
       frame.appendChild(text);
       frame.resize(text.width + 20, text.height + 20);
 
+      // Get absolute position of selected object (handles nested frames correctly)
+      const absoluteX = selection.absoluteTransform[0][2];
+      const absoluteY = selection.absoluteTransform[1][2];
+
       // Position the text 100px to the left and 100px above the selected object
-      frame.x = selection.x - 100;
-      frame.y = selection.y - 100;
+      frame.x = absoluteX - 100;
+      frame.y = absoluteY - 100;
       frame.paddingLeft = 10;
       frame.paddingRight = 10;
       frame.paddingTop = 10;
@@ -88,8 +92,13 @@ if (figma.currentPage.selection.length === 0) {
         frame.name = "Dimensions Info";
         frame.appendChild(text);
         frame.resize(text.width + 20, text.height + 20);
-        frame.x = selection.x - 100;
-        frame.y = selection.y - 100;
+
+        // Get absolute position of selected object (handles nested frames correctly)
+        const absoluteX = selection.absoluteTransform[0][2];
+        const absoluteY = selection.absoluteTransform[1][2];
+
+        frame.x = absoluteX - 100;
+        frame.y = absoluteY - 100;
         frame.paddingLeft = 10;
         frame.paddingRight = 10;
         frame.paddingTop = 10;
